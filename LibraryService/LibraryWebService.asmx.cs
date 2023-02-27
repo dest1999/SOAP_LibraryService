@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LibraryService.Models;
+using LibraryService.Services;
+using LibraryService.Services.Implementation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,11 +19,37 @@ namespace LibraryService
     // [System.Web.Script.Services.ScriptService]
     public class LibraryWebService : WebService
     {
+        private ILibraryRepositoryService _libraryRepositoryService;
+
+        public LibraryWebService()
+        {
+            _libraryRepositoryService = new LibraryRepository(new LibraryDBContext());
+        }
 
         [WebMethod]
-        public string HelloWorld(string s)
+        public List<Book> GetAllBooks()
         {
-            return $"Hello {s}";
+            return (List<Book>)_libraryRepositoryService.GetAllBooks();
         }
+
+        [WebMethod]
+        public List<Book> GetBooksByTytle(string tytle)
+        {
+            return (List<Book>)_libraryRepositoryService.GetByTitle(tytle);
+        }
+
+        [WebMethod]
+        public List<Book> GetBookByCathegory(string cathegory)
+        {
+            return (List<Book>)_libraryRepositoryService.GetByCategory(cathegory);
+        }
+
+        [WebMethod]
+        public List<Book> GetBooksByAuthor(string author)
+        {
+            return (List<Book>)_libraryRepositoryService.GetByAuthor(author);
+        }
+
+
     }
 }

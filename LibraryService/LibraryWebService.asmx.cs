@@ -33,7 +33,7 @@ namespace LibraryService
         }
 
         [WebMethod]
-        public List<Book> GetBooksByTytle(string tytle)
+        public List<Book> GetBooksByTitle(string tytle)
         {
             return (List<Book>)_libraryRepositoryService.GetByTitle(tytle);
         }

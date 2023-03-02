@@ -19,7 +19,6 @@ namespace LibraryService.Services.Implementation
 
         private void Init()
         {
-            //TODO JsonConvert.DeserializeObject<Book> ?
 
             books = (List<Book>)JsonConvert.DeserializeObject(Encoding.UTF8.GetString(Properties.Resources.books), typeof(List<Book>));
         }

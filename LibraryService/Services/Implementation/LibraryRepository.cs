@@ -23,7 +23,7 @@ namespace LibraryService.Services.Implementation
 
         public IList<Book> GetByAuthor(string authorName)
         {
-            //TODO .Contains()
+            
             return dbContextService.Books.Where(b => 
                 b.Authors.Where(author => author.Name.ToLower().Contains(authorName.ToLower())).Count() > 0).ToList();
         }
